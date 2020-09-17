@@ -27,7 +27,7 @@ You can see any errors by inspect in the console .
 ### WebPage Screenshot
 Screenshot of the User Interface.
 
-
+<img width="960" alt="s1" src="https://user-images.githubusercontent.com/52202834/93461749-d2cb2180-f902-11ea-99de-39c1a8bdd0f0.png">
 
 ### Skills used for this project
 
@@ -40,4 +40,9 @@ Screenshot of the User Interface.
 * MongoDB
 
 ## Top Features
-
+* Search job based on requirement.
+* Create Post where can like comment and share.
+* Authentication and authorization
+* To connect with people, follow and chat.
+* To post job and changes the detials of posted job.
+* Profile information of User.
