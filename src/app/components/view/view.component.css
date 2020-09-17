@@ -1,0 +1,18 @@
+.btn{
+    background-color: inherit;
+    display: inline-block;
+    border:none;
+}
+.c{
+    position:relative;
+    z-index: 1;
+}
+
+.list-group-item-view {
+    position: relative;
+  display: inline-block;
+  padding: 0.5em 1.25em 0.5em 1.25em;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}

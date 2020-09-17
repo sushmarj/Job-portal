@@ -1,0 +1,174 @@
+<div class="container emp-profile col-md-12">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="{{users.profileImage}}" class="rounded-circle" alt="Image not available" style="width:50%; height:40%" >
+                    <div class="file btn btn-xs btn-primary" >
+                        Change Photo
+                        <input type="file" name="file" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="profile-head">
+                    <h5>
+                        {{users.profileName | uppercase}}
+                    </h5>
+                    <h6 class="col-md-offset-1">
+                        {{users.workExp[users.workExp.length -1].designation}}<br />
+                        {{users.workExp[users.workExp.length -1].companyName}}<br /><br />
+                        <p>Profile Link:   <b>{{users.profileLink}}</b></p>
+                    </h6>
+                </div>
+                <hr>
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="profile-edit-btn" (click)='editProfile()' name="btnAddMore" value="Edit Profile" />
+            </div>
+        </div>
+        <!-- Details Info -->
+        <div class="col-md-12">
+            <div class="card border-primary mb-3">
+                <div class="card-header">
+                    <h3>Personal Info</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-1">
+                            <label>Profile Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{users.profileName}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Email</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{users.email}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Address</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{users.address}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Make it as Table and *ngFor -->
+            <div class="card border-danger mb-3">
+                <div class="card-header">
+                    <h3>Educational details</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Qualification</th>
+                                <th>University Name</th>
+
+                                <th>Year Of Completion</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let edu of users.educationDetails">
+                                <td>{{edu.qualification}}</td>
+                                <td>{{edu.universityName}}</td>
+
+                                <td>{{edu.yearOfCompletion}}</td>
+                                <td>{{edu.percentage}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card border-success mb-3">
+                <div class="card-header">
+                    <h3>Working Experience</h3>
+                </div>
+                <div class="card-body">
+
+                    <table class="table table-striped table-bordered" *ngFor="let work of users.workExp">
+                        <thead>
+                            <tr>
+                                <th>Designation</th>
+                                <th>Company Name</th>
+                                <th>Company Location</th>
+                                <th>Started From</th>
+                                <th>Ended At</th>
+                                <th>Currently Working</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{work.designation}}</td>
+                                <td>{{work.companyName}}</td>
+                                <td>{{work.location}}</td>
+                                <td>{{work.fromDate}}</td>
+                                <td>{{work.toDate}}</td>
+                                <td>{{work.currentlyWorking}}</td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card border-dark mb-3">
+                <div class="card-header">Posts Posted</div>
+                <div class="card-body" *ngFor="let post of users.posts">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Description Of Post</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{post.description}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Date Posted On</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{post.dateOfPost}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Post Text</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{post.postText}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Post Image</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label><img src="{{post.postImage}}" class="rounded" width="90px" height="90px"></label><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Post Video</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{post.postVideo}}</p>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

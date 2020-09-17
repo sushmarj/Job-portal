@@ -1,0 +1,84 @@
+<h2>Company details</h2>
+<form [formGroup]="myForm">
+  <div class="form-group">
+    <label>Company Name</label>
+    <input #name class="form-control" formControlName="name">
+    <div *ngIf="myForm.controls['name'].hasError('required') &&
+            myForm.controls['name'].touched " class="alert alert-danger">name
+      Required</div>
+    <div *ngIf="myForm.controls['name'].hasError('minlength') &&
+            myForm.controls['name'].touched" class="alert alert-danger">minimum
+      8 characters</div>
+    <div *ngIf="myForm.controls['name'].hasError('maxlength') &&
+            myForm.controls['name'].touched" class="alert alert-danger">maximum
+      30 characters</div>
+
+  </div>
+  <div class="form-group">
+    <label>Company Located</label>
+    <input #location class="form-control" formControlName="location">
+    <div *ngIf="myForm.controls['location'].hasError('required') &&
+            myForm.controls['location'].touched"
+      class="alert alert-danger">location Required</div>
+    <div *ngIf="myForm.controls['location'].hasError('minlength') &&
+            myForm.controls['location'].touched"
+      class="alert alert-danger">minimum 8 characters</div>
+    <div *ngIf="myForm.controls['location'].hasError('maxlength') &&
+            myForm.controls['location'].touched"
+      class="alert alert-danger">maximum 30 characters</div>
+
+
+  </div>
+  <div class="form-group">
+    <label>Company Description </label>
+    <input #description class="form-control" formControlName="description">
+    <div *ngIf="myForm.controls['description'].hasError('required') &&
+            myForm.controls['description'].touched"
+      class="alert alert-danger">description Required</div>
+    <div *ngIf="myForm.controls['description'].hasError('minlength') &&
+            myForm.controls['description'].touched"
+      class="alert alert-danger">minimum 8 characters</div>
+    <div *ngIf="myForm.controls['description'].hasError('maxlength') &&
+            myForm.controls['description'].touched"
+      class="alert alert-danger">maximum 30 characters</div>
+
+
+  </div>
+  <div class="form-group">
+    <label>Company Website</label>
+    <input #website class="form-control" formControlName='website'>
+    <div *ngIf="myForm.controls['website'].hasError('required') &&
+            myForm.controls['website'].touched"
+      class="alert alert-danger">website Required</div>
+    <div *ngIf="myForm.controls['website'].hasError('pattern') &&
+            myForm.controls['website'].touched" class="alert alert-danger">match
+      the pattern
+    </div>
+
+
+
+  </div>
+  <div class="form-group">
+    <label>Company Founded In </label>
+    <input #yearFounded class="form-control" formControlName='yearFounded'>
+    <div *ngIf="myForm.controls['yearFounded'].hasError('required') &&
+            myForm.controls['yearFounded'].touched" class="alert alert-danger">date
+      Required</div>
+
+  </div>
+  <div class="form-group">
+    <label>No Of Employees Working</label>
+    <input #companysize class="form-control" formControlName="companysize">
+    <div *ngIf="myForm.controls['companysize'].hasError('required') &&
+            myForm.controls['companysize'].touched"
+      class="alert alert-danger">no of workers Required</div>
+    <div *ngIf="myForm.controls['companysize'].hasError('pattern') &&
+            myForm.controls['companysize'].touched"
+      class="alert alert-danger">enter only numbers
+    </div>
+
+  </div>
+  <div>
+    <button class="btn btn-primary" type="submit" (click)="addCompanyDetailsToService(name.value,location.value, description.value, website.value, yearFounded.value, companysize.value )">Post</button>
+  </div>
+</form>

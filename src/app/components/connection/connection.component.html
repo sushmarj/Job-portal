@@ -1,0 +1,44 @@
+<div class="container col-md-12">
+    <div class="row ">
+  
+      <div class=" col-md-12" style="padding-top:40px" >
+        <div class="card" *ngFor="let details of userObj">
+          <div class="card-header"><label><img src="{{details.profileImage}}" class="rounded-circle" width="50px" height="50px"></label><br>
+            <label><b>{{details.profileName}}</b></label><br>
+            <label>{{details.jobName}}</label>
+            <div class="card-body"></div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">No.of Connections</li>
+              <li class="list-group-item">jobs applied</li>
+              <li class="list-group-item">Companies looking for your skills:{{details.companyName}}</li>
+            </ul>
+  
+          </div>
+        </div>
+      </div> 
+
+
+
+<div class="container col-md-8">
+  <h2 class="text-center">Recommened For You</h2>
+  <div class="card-group">
+  <div class="card-columns">
+<div class="card" *ngFor="let con of connections">
+  <div class="card-header"><label><img src="{{con.profileImage}}" class="rounded-circle" width="100px" height="100px"></label><br>
+  </div>
+  <div class="card-body">
+      <label>{{con.profileName}}</label><br>
+      <label>{{con.jobName}}</label><br>
+      <label>{{con.description}}</label><br>
+      <label>{{con.profileLink}}</label><br>
+      <div>      
+      <button class="btn btn-primary">Connect</button>
+      </div>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+
+</div>
+</div>

@@ -1,0 +1,56 @@
+<div style=" border: 1px solid gray; background-color: white ; padding:10px;">
+  <button class='btn btn-info btn-sm float-right' (click)="toggle()">X</button><br />
+  <br />
+  <ul class="list-group">
+    <li class="list-group-item">
+      <div class="form-group">
+        <label>
+          <h2>View More Products</h2>
+        </label>
+
+        <div style="padding-left: 20px">
+          &nbsp; &nbsp;&nbsp; &nbsp;
+          <a routerLink="/companies" class="btn btn-info btn-sm">
+            <span class="glyphicon glyphicon-tower"></span> advertise
+          </a>&nbsp; &nbsp;
+          <a routerLink="/job" class="btn btn-info btn-sm" >
+            <span class="glyphicon glyphicon-folder-close"></span> post a job
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+
+  &nbsp; &nbsp;
+  <div style="background-color:white; border:2px;">
+
+
+    <ul class="list-group">
+      <li class='list-group-item'>
+        <h4>Our business services</h4>
+      </li>
+      
+
+      <li class="list-group-item">
+        <a routerLink='/companies'><h4>Advertisement</h4></a>
+        
+        <h5 style="color: gray">Grow your business</h5>
+      </li>
+      <li class="list-group-item">
+        <a routerLink='/job'>
+          <h4>Post a job</h4>
+        </a>
+        <h5 style="color: gray">Get your job in front of quality candidates</h5>
+      </li>
+
+      <li class="list-group-item">
+        <a routerLink='/companies'>
+          <h4>Add a company</h4>
+        </a>
+        <h5 style="color: gray">Get your company connected</h5>
+      </li>
+
+    </ul>
+  </div>
+</div>

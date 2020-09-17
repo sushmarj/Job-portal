@@ -1,0 +1,76 @@
+<div class="col-md-12" style="position: absolute;z-index: inherit 0;">
+  <div class="row vh-100">
+    <!-- left side -->
+    <div class=" col-md-3 py-3 ">
+      <div class="card sticky-top">
+        <div class="card-header"><label #image><img src="{{home.profileImage}}" class="rounded-circle" width="50px"
+              height="50px"></label><br>
+          <label><b>{{home.profileName | uppercase}}</b></label><br>
+          <label style="font-size: 75%;"><b>Profile Link :</b><br/>{{home.profileLink}}</label>
+          <div class="card-body"></div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">No.of Connections</li>
+            <li class="list-group-item">Jobs applied : {{home.jobs.length}}</li>
+            
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Posts -->
+    <div class="col-md-6 py-3">
+      <div class="card">
+        <div class="card-header">
+          <label class="text-muted">Share a post,image,video,article</label>
+        </div>
+        <div class="card-body">
+          <button class="btn btn-hover btn-light" (click)="onToggle()" type="submit">Write an article</button>
+          &nbsp;&nbsp;
+          <button class="btn btn-hover btn-light" type="submit">Images</button>
+          &nbsp;&nbsp;
+          <button class="btn btn-hover btn-light" type="submit">Video</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <button class="btn btn-info" type="submit" (click)="addPostToService()">Post</button>
+        </div>
+        <div *ngIf="writePost">
+          <textarea style="width:29rem" rows="5" #postText [(ngModel)]="postObj.postText"></textarea>
+        </div>
+      </div>
+      <hr>
+      <div class="card" *ngFor="let p of post.posts">
+        <div class="card-header">
+          <label><img src="{{home.profileImage}}" class="rounded-circle" width="50px" height="50px"></label>
+          &nbsp;&nbsp;
+          <label>{{home.profileName}}</label>
+          <br>
+          <label>{{p.description}}</label><br>
+          <label>{{p.dateOfPost}}</label></div><br>
+        <div class="card-body">
+          <label>{{p.postText}}</label><br>
+          <label><img src="{{p.postImage}}" class="rounded" width="400px" height="400px"></label><br>
+          <label>{{p.postVideo}}</label><br>
+          <button (click)="changeColor()" style="font-size: 15px;color:lightskyblue"><img src="../assets/like.png"
+              width=20px height=20px>&nbsp;&nbsp;Like</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Side -->
+    <div class="col-md-3 py-3" style="z-index:0">
+      <div class="card sticky-top">
+        <div class="card-header">
+          <h3>Advertisement</h3>
+        </div>
+        <div class="container-fluid card-body" *ngFor="let adv of companyadv">
+          <label><img src="{{adv.advertisement}}" width="175px" height="100px"></label><br>
+          <hr>
+          <label><b>{{adv.companyDetails.companyName}}</b></label><br>
+          <label>{{adv.companyDetails.description}}</label>
+          <hr>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

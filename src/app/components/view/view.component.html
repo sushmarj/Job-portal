@@ -1,0 +1,43 @@
+<div class="c" style=" background-color: white ; padding:5%;">
+  <div class="form-group">
+    <div class="container text-center" >
+      <label><img src="{{users.profileImage}}" class="rounded-circle" width="80px" height="80px"></label><br>
+      <label>
+        <b>
+          <h5>{{users.profileName |uppercase}}</h5>
+          <!-- <h6>{{users.workExp[users.workExp.length -1].designation}}</h6> -->
+        </b>
+      </label>
+   
+    </div>
+    <br />
+    <div style="background-color:white; border:2px;">
+      <ul class="list-group">
+        <li class='list-group-item-view'> <a routerLink='/profile'>
+            <b>View Profile</b>
+          </a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- &nbsp; &nbsp; -->
+  <div style="background-color:white; border:2px;">
+    <ul class="list-group">
+      <li class='list-group-item-view'>
+        <b>MANAGE</b>
+      </li>
+      <li class="list-group-item-view">
+        <a href=""><b>Posts & Activity</b></a>
+        <h6 style="color:gray">Manage your posts & activities</h6>
+      </li>
+
+      <li class="list-group-item-view">
+        <a href=""><b>Jobs</b></a>
+        <h6 style="color: gray">Look for your jobs</h6>
+      </li>
+      <li class="list-group-item-view">
+        <a routerLink="/register" (click)="deleteToken()"><b>Sign Out</b></a>
+        <h6 style="color: gray"></h6>
+      </li>
+    </ul>
+  </div>
+</div>

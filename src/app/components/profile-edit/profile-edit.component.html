@@ -1,0 +1,316 @@
+<div class="col-md-12">
+  <div class="col-md-3 col-md-offset-1" style="position:absolute">
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a (click)="toggleGeneralInfo()">General Info</a><br>
+      </li>
+      <li class="list-group-item">
+        <a (click)="toggleEduDetails()">Education Details</a>
+      </li>
+      <li class="list-group-item">
+        <a (click)="toggleWorkExp()">Work Experience</a>
+      </li>
+      <li class="list-group-item">
+        <a (click)="togglePosts()">Posts</a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6" style="margin-left: 30%">
+    <form [formGroup]="myForm">
+
+      <!-- General Info -->
+      <div *ngIf="generalInfo">
+        <label>
+          <h3><u>General Info:</u></h3>
+        </label><br>
+        <div class="form-group">
+          <label>Profile Name:</label>
+          <input type="text" formControlName="profileName" #profileName [(ngModel)]="userObj.profileName" class="form-control" />
+          <div *ngIf="myForm.controls['profileName'].hasError('required') && myForm.controls['profileName'].touched"
+            class="alert alert-danger">profileName
+            Required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Id:</label>
+          <input type="text" formControlName="email" #email [(ngModel)]="userObj.email" class="form-control" disabled />
+          <div *ngIf="myForm.controls['email'].hasError('required') && myForm.controls['email'].touched" class="alert alert-danger">PhoneNo
+            Required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Address:</label>
+          <input type="text" formControlName="address" #address [(ngModel)]="userObj.address" class="form-control" />
+          <div *ngIf="myForm.controls['address'].hasError('required') && myForm.controls['address'].touched" class="alert alert-danger">Address
+            Required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Description:</label>
+          <input type="text" formControlName="description" #description [(ngModel)]="userObj.description" class="form-control" />
+          <div *ngIf="myForm.controls['description'].hasError('required') && myForm.controls['description'].touched"
+            class="alert alert-danger">Description Required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Skills:</label>
+          <input type="text" formControlName="skills" #skills [(ngModel)]="userObj.skills" class="form-control" />
+          <div *ngIf="myForm.controls['skills'].hasError('required') && myForm.controls['skills'].touched" class="alert alert-danger">Skills
+            Required
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Interests:</label>
+          <input type="text" formControlName="interests" #interests [(ngModel)]="userObj.interests" class="form-control" />
+          <div *ngIf="myForm.controls['interests'].hasError('required') && myForm.controls['interests'].touched" class="alert alert-danger">Interests
+            Required
+          </div>
+        </div>
+        <br />
+
+        <button type="save" (click)="save()" class="btn btn-sucess">
+          Save
+        </button>
+        &nbsp; &nbsp;
+        <button type="cancel" (click)="cancel()" class="btn btn-warning">
+          Cancel
+        </button>
+      </div>
+
+      <!-- Education Details -->
+      <div *ngIf="educationDetail">
+        <div class="well">
+          <div class="form-group">
+            <label>
+              <h3><u>Education Details:</u> </h3>
+                
+
+            </label><br>
+            
+            <div>
+              <div class="form-group">
+                <label>University Name</label>
+                <input type="text" formControlName="universityName" #universityName [(ngModel)]="userObj.educationDetails[userObj.educationDetails.length -1].universityName"
+                  class="form-control" />
+                <div *ngIf="myForm.controls['universityName'].hasError('required') && myForm.controls['universityName'].touched"
+                  class="alert alert-danger">University
+                  Name Required
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Qualification</label>&nbsp; &nbsp;
+                <input formControlName="qualification" class="form-control" #qualification [(ngModel)]="userObj.educationDetails[userObj.educationDetails.length -1].qualification">
+              </div>
+              <div class="form-group">
+                <label>Percentage</label>
+                <input type="text" formControlName="percentage" #percentage [(ngModel)]="userObj.educationDetails[userObj.educationDetails.length -1].percentage" class="form-control" />
+                <div *ngIf="myForm.controls['percentage'].hasError('required') && myForm.controls['percentage'].touched"
+                  class="alert alert-danger">Percentage Required
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Year Of Completion</label>
+                <input type="date" formControlName="yearOfCompletion" #yearOfCompletion [(ngModel)]="userObj.educationDetails[userObj.educationDetails.length -1].yearOfCompletion"
+                  class="form-control" />
+                <div *ngIf="myForm.controls['yearOfCompletion'].hasError('required') && myForm.controls['yearOfCompletion'].touched"
+                  class="alert alert-danger">Year Of Completion required
+                </div>
+              </div>
+              <hr>
+            </div>
+            <br />
+
+
+            <button type="save" (click)="save()" class="btn btn-sucess">
+              Save
+            </button>
+            &nbsp; &nbsp;
+            <button type="cancel" (click)="cancel()" class="btn btn-warning">
+              Cancel
+            </button>
+            &nbsp; &nbsp;
+            <button (click)="addToggleEdu()" class="btn btn-xs btn-primary float-right">+</button>
+          </div>
+        </div>
+
+        <div>
+          <div *ngIf="!newEduDetails">
+            <div class="form-group">
+              <label>University Name</label>
+              <input type="text" formControlName="universityName" #universityName [(ngModel)]="edu.universityName"
+                class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Qualification</label>&nbsp; &nbsp;
+              <input formControlName="qualification" class="form-control" #qualification [(ngModel)]="edu.qualification">
+            </div>
+            <div class="form-group">
+              <label>Percentage</label>
+              <input type="text" formControlName="percentage" #percentage [(ngModel)]="edu.percentage" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Year Of Completion</label>
+              <input type="date" formControlName="yearOfCompletion" #yearOfCompletion [(ngModel)]="edu.yearOfCompletion"
+                class="form-control" />
+            </div>
+            <button class="btn btn-primary" (click)= "addEduDetails()">Add Details</button>
+          </div>
+          <br />
+
+        </div>
+      </div>
+
+      <!-- Work Experience -->
+      <div *ngIf="workExperience">
+        <div class="well">
+          <div class="form-group">
+            <label>
+              <h3><u>Work Experience:</u></h3>
+            </label><br>
+            <div *ngFor="let work of userObj.workExp">
+              <div class="form-group">
+                <label>Designation</label>
+                <input type="text" formControlName="designation" #designation [(ngModel)]="work.designation" class="form-control" />
+                <div *ngIf="myForm.controls['designation'].hasError('required') && myForm.controls['designation'].touched"
+                  class="alert alert-danger">Designation Required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Company Name</label>
+                <input type="text" formControlName="companyName" #companyName [(ngModel)]="work.companyName" class="form-control" />
+                <div *ngIf="myForm.controls['companyName'].hasError('required') && myForm.controls['companyName'].touched"
+                  class="alert alert-danger">Company Name Required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Location</label>
+                <input type="text" formControlName="location" #location [(ngModel)]="work.location" class="form-control" />
+                <div *ngIf="myForm.controls['location'].hasError('required') && myForm.controls['location'].touched"
+                  class="alert alert-danger">Location
+                  Required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>From Month</label>
+                <input type="date" formControlName="fromDate" #fromDate [(ngModel)]="work.fromDate" class="form-control" />
+                <div *ngIf="myForm.controls['fromDate'].hasError('required') && myForm.controls['fromDate'].touched"
+                  class="alert alert-danger">From Month Required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>To Month</label>
+                <input type="date" formControlName="toDate" #toDate [(ngModel)]="work.toDate" class="form-control" />
+                <div *ngIf="myForm.controls['toDate'].hasError('required') && myForm.controls['toDate'].touched"
+                  class="alert alert-danger">To
+                  Month Required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Currently Working</label>
+                <input type="text" formControlName="currentlyWorking" #currentlyWorking [(ngModel)]="work.currentlyWorking"
+                  class="form-control" />
+                <div *ngIf="myForm.controls['currentlyWorking'].hasError('required') && myForm.controls['currentlyWorking'].touched"
+                  class="alert alert-danger">Currently Working Required
+                </div>
+              </div>
+            </div>
+            <br />
+
+            <button type="save" (click)="save()" class="btn btn-sucess">
+              Save
+            </button>
+            &nbsp; &nbsp;
+            <button type="cancel" (click)="cancel()" class="btn btn-warning">
+              Cancel
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Edit -->
+      <div *ngIf="posts">
+        <div class="well">
+          <div class="form-group">
+            <label>
+              <h3><u>Posts:</u></h3>
+            </label> <br>
+
+            <div class="form-group">
+              <label>Profile Name</label>
+              <input type="text" formControlName="profileName" #profileName [(ngModel)]="userObj.profileName" class="form-control" />
+              <div *ngIf="myForm.controls['profileName'].hasError('required') && myForm.controls['profileName'].touched"
+                class="alert alert-danger">Profile Name Required
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Profile Image</label>
+              <input type="text" formControlName="profileImage" #profileImage [(ngModel)]="userObj.profileImage" class="form-control" />
+              <div *ngIf="myForm.controls['profileImage'].hasError('required') && myForm.controls['profileImage'].touched"
+                class="alert alert-danger">Profile Image Required
+              </div>
+            </div>
+
+            <div *ngFor = "let post of userObj.posts">
+              <div class="form-group">
+                <label>Date Of Post</label>
+                <input type="date" formControlName="dateOfPost" #dateOfPost [(ngModel)]="post.dateOfPost"
+                  class="form-control" />
+                <div *ngIf="myForm.controls['dateOfPost'].hasError('required') && myForm.controls['dateOfPost'].touched"
+                  class="alert alert-danger">Date Posted Required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Post Text</label>
+                <input type="text" formControlName="postText" #postText [(ngModel)]="post.postText" class="form-control" />
+                <div *ngIf="myForm.controls['postText'].hasError('required') && myForm.controls['postText'].touched"
+                  class="alert alert-danger">Post
+                  Text Required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Post Image</label>
+                <input type="text" formControlName="postImage" #postImage [(ngModel)]="post.postImage" class="form-control" />
+                <div *ngIf="myForm.controls['postImage'].hasError('required') && myForm.controls['postImage'].touched"
+                  class="alert alert-danger">Post Image Required
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Post Video</label>
+                <input type="text" formControlName="postVideo" #postVideo [(ngModel)]="post.postVideo" class="form-control" />
+                <div *ngIf="myForm.controls['postVideo'].hasError('required') && myForm.controls['postVideo'].touched"
+                  class="alert alert-danger">Post Video Required
+                </div>
+              </div>
+
+              <br />
+            </div>
+
+
+            <button type="save" (click)="save()" class="btn btn-sucess">
+              save
+            </button>
+            &nbsp; &nbsp;
+            <button type="cancel" (click)="cancel()" class="btn btn-warning">
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- <button (click)="" class="btn btn-xs btn-primary">Edit</button> -->
+</div>

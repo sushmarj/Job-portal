@@ -1,0 +1,39 @@
+<div class="well">
+  <form [formGroup]="myForm" >
+  <div class="form-group">
+    <label>JobName</label>
+    <input type="text" name="name" #name class="form-control" />
+    <div *ngIf="myForm.controls['name'].hasError('required') && myForm.controls['name'].touched" class="alert alert-danger">name Required</div>
+  </div>
+  <div class="form-group">
+    <label>JobDescription</label>
+    <input type="text" name="description" #description class="form-control" />
+    <div  *ngIf="myForm.controls['description'].hasError('required') && myForm.controls['description'].touched" class="alert alert-danger">Desription Required</div>
+  </div>
+
+  <div class="form-group">
+    <label>DatePosted</label>
+    <input type="date" name="date" #date class="form-control" max="2018-12-12"/>
+    <div *ngIf="myForm.controls['date'].hasError('required') && myForm.controls['date'].touched" class="alert alert-danger">Date Required</div>
+  </div>
+
+  <div class="form-group">
+    <label>Company Details</label>
+    <!-- <input type="text" name="CompanyDetails" #details class="form-control" [(ngModel)] =this.jobObject[0].companyDetails.companyName/> -->
+    <select name="CompanyDetails" #details class="form-control">
+      <option *ngFor="let c of jobObject" value={{c.companyName}} >{{c.companyName}}</option>
+   
+    </select> 
+  </div>
+  
+  <div class="form-group">
+    <label>Last Date</label>
+    <input type="date" name="ldate" #ldate class="form-control" min="2018-12-12" />
+    <label>Status</label>
+    <input type="text" name="status" #status class="form-control" />
+  </div>
+    <button class="btn btn-info"  (click)="addJobToService(name.value,description.value,date.value,details.value,ldate.value,status.value)">Submit</button> &nbsp;
+    <button class="btn btn-warning" (click)="cancel()">Cancel</button>
+    </form>
+ 
+</div>

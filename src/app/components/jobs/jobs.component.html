@@ -1,0 +1,112 @@
+<div class="well sticky-top" style="z-index:0;">
+
+  <div class="card text-white bg-dark mb-3">
+    <div class="card-header">
+      <input type="text" placeholder="Enter Job Name" #search  />
+      &nbsp;&nbsp;&nbsp;
+      <button class="btn btn-outline-success" type="submit" (click)=searchByName(search.value)>Search</button>
+      &nbsp;&nbsp;&nbsp; 
+      <button routerLink="/job" class="btn btn-success float-right" type="button">Post Jobs</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf= "toggle">
+  <div class="modal-header">
+    <div class="modal-title pull-left">
+
+      <label><b>{{jobs12[0].companyDetails.companyName}}</b></label><br>
+      <label>{{jobs12[0].jobName}}</label><br>
+
+    </div>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h3>Job Description</h3>
+      <label>{{jobs12[0].jobDescription}}</label><br>
+      <h3>Company Details</h3>
+      <label>{{jobs12[0].companyDetails.companyName}}</label><br>
+      <label>{{jobs12[0].companyDetails.companyLocation}}</label><br>
+      <label>{{jobs12[0].companyDetails.description}}</label><br>
+      <label>{{jobs12[0].companyDetails.website}}</label><br>
+      <label>{{jobs12[0].companyDetails.yearFounded}}</label><br>
+      <label>{{jobs12[0].companyDetails.companySize}}</label><br>
+  </div>
+  <button class="btn btn-danger" (click) = "hideSearch()">Close</button>
+</div>
+
+
+
+
+
+<div class="well col-md-12">
+  <h2>Jobs You Are Interested In</h2>
+
+  <div class="card-columns">
+    <div class="card" *ngFor="let j of jobs">
+      <!-- <img class="rounded-circle" width="100px" height="100px" src="{{j.jobImage}}" alt="image "> -->
+      <div class="card-body">
+        <label><h2>{{j.companyDetails.companyName}}</h2></label><br>
+        <label><h3>{{j.jobName}}</h3></label><br>
+      </div>
+
+      <div class="text-center">
+        <button (click)="openModal(template)" class="btn btn-primary btn-sm">View More</button>
+      </div>
+      <br>
+
+      <div class="card-footer">
+        <small class="text-muted">Posted On Date-{{j.datePosted | date: "yyyy/dd/mm"}}</small>
+      </div>
+
+      <!-- <div *ngIf="viewMore">
+          <div class="card">
+            <div class="card-title">
+              <label><b>{{j.companyDetails.companyName}}</b></label><br>
+              <label>{{j.jobName}}</label><br>
+            </div>
+            <div class="card-body">
+              <h3>Job Description</h3>
+              <label>{{j.description}}</label><br>
+              <h3>Company Details</h3>
+              <label>{{j.companyDetails.companyName}}</label><br>
+              <label>{{j.companyDetails.companyLocation}}</label><br>
+              <label>{{j.companyDetails.description}}</label><br>
+              <label>{{j.companyDetails.website}}</label><br>
+              <label>{{j.companyDetails.yearFounded}}</label><br>
+              <label>{{j.companyDetails.companySize}}</label><br>
+            </div>
+          </div>
+        </div> -->
+        
+        <ng-template #template>
+          <div class="modal-header">
+            <div class="modal-title pull-left">
+
+              <label><b>{{j.companyDetails.companyName}}</b></label><br>
+              <label>{{j.jobName}}</label><br>
+
+            </div>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <h3>Job Description</h3>
+              <label>{{j.jobDescription}}</label><br>
+              <h3>Company Details</h3>
+              <label>{{j.companyDetails.companyName}}</label><br>
+              <label>{{j.companyDetails.companyLocation}}</label><br>
+              <label>{{j.companyDetails.description}}</label><br>
+              <label>{{j.companyDetails.website}}</label><br>
+              <label>{{j.companyDetails.yearFounded}}</label><br>
+              <label>{{j.companyDetails.companySize}}</label><br>
+          </div>
+        </ng-template>
+
+
+    </div>
+  </div>
+</div>

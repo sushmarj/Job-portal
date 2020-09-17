@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <div class="row margin-left-register">
+    <!-- Login Page -->
+    <div style="margin-left:3%">
+      <table class="form-group">
+        <thead></thead>
+        <tbody>
+          <tr>
+            <td><input type="email" placeholder="Email Id" [(ngModel)]='loginObject.email' name="email" class="form-control">
+            </td>
+            <td><input type="password" placeholder="Password" [(ngModel)]='loginObject.password' name="password" class="form-control"> </td>
+            <td>
+              <button type="submit" class="btn btn-success" (click)="signIn()">Log In</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <hr>
+  <div style="opacity:0.3; position:absolute;">
+    <img src="https://thumbs.dreamstime.com/b/network-connecting-people-white-background-35375250.jpg" alt="background image not working" width=125%
+      height=480px>
+  </div>
+  <strong>
+    <!-- Register Page in same File -->
+    <div class="col-md-6 margin-left-register">
+      <h1>Join Us Now</h1>
+      <form [formGroup]="myForm">
+
+        <div class="form-group">
+          <label>First name</label>
+          <input type="text" class="form-control" #fname formControlName="fname" placeholder="First Name">
+          <div *ngIf="myForm.controls['fname'].hasError('required') &&
+  myForm.controls['fname'].touched" class="alert alert-danger">first
+            name Required</div>
+        </div>
+
+        <div class="form-group">
+          <label>Last name</label>
+          <input type="text" class="form-control" #lname formControlName="lname" placeholder="Last Name">
+          <div *ngIf="myForm.controls['lname'].hasError('required') &&
+    myForm.controls['lname'].touched" class="alert alert-danger">last
+            name Required</div>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" class="form-control" #email formControlName="email" placeholder="Email Address">
+          <div *ngIf="myForm.controls['email'].hasError('required') &&
+    myForm.controls['email'].touched" class="alert alert-danger">Email
+            Required</div>
+        </div>
+
+        <div class="form-group">
+          <label>password</label>
+          <input type="password" class="form-control" #password formControlName="password" placeholder="Password">
+          <div *ngIf="myForm.controls['password'].hasError('required') &&
+  myForm.controls['password'].touched" class="alert alert-danger">password
+            Required</div>
+          <div *ngIf="myForm.controls['password'].hasError('minlength') " class="alert alert-danger"> minimum length
+            should be 8 characters</div>
+          <div *ngIf="myForm.controls['password'].hasError('maxlength') " class="alert alert-danger"> max length should
+            be 15 characters</div>
+        </div>
+
+        <button class="btn btn-success" type="submit" [disabled]="!myForm.valid" 
+        (click) = "addUserToServices(fname.value, lname.value, email.value, password.value)">Join Now</button>
+      </form>
+    </div>
+  </strong>
+</div>
