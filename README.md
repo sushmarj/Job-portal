@@ -2,6 +2,7 @@
  
 ### `Angular Application`
 
+Demonstrating the Job portal application using Angular to build a Networking web application where every user can get themselves connected with other users along with organization globally.
 
 
 ## Installation and Launch
